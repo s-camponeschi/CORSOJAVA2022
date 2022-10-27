@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author neotech
+ *
+ */
+module TestClass {
+}
