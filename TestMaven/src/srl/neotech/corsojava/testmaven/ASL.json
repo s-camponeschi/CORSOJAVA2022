@@ -1,0 +1,20 @@
+{
+"dettaglio-asl":{
+				"denominazione":"San Massimiliano",
+				"via":"Viale Kant",
+				"orario-apertura":"09:00",
+				"orario-chiusura":"17:00"
+				"ospedali":[
+					{
+					"denominazione":"Ospedale 01",
+					"via": "Via Giulio Cesare",
+					"reparti":[
+							{
+							"denominazione":"ortopedia",
+							"primario":"Dott. Saccucci"
+							}
+							]
+					}
+					]
+				}
+}

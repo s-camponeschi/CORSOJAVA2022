@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dettaglio-asl>
+	<denominazione> ASL ROMA </denominazione>
+	<via> Via Benevento, 34 </via>
+	<numero-parcheggi> 180 </numero-parcheggi>
+	<ospedali>
+		<ospedale>
+		<denominazione> San Massimiliano </denominazione>
+		<via> Via Kant, 56 </via>
+		<reparti>
+			<reparto id="reparto 01" stato="chiuso">
+			<denominazione> Ortopedia </denominazione>
+			<primario> Dott. Saccucci </primario>
+			</reparto>
+			<reparto id="reparto 02" stato= "ristrutturazione">
+			<denominazione> Chirurgia </denominazione>
+			<primario> Dott. Camponeschi </primario>
+			</reparto>
+		</reparti>
+		</ospedale>
+	</ospedali>
+</dettagio-asl>
