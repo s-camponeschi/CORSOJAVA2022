@@ -5,11 +5,10 @@ public class Aereo {
 	private Integer idUnivoco;
 	private Integer orario;
 	private String compagniaAerea;
-	private String modelloAereo;
+	private ModelloAereo modello;
 	private Integer velocita;
 	private Integer distanzaDallAeroporto;
 	private String stato;
-	
 	
 	public Integer getIdUnivoco() {
 		return idUnivoco;
@@ -29,11 +28,11 @@ public class Aereo {
 	public void setCompagniaAerea(String compagniaAerea) {
 		this.compagniaAerea = compagniaAerea;
 	}
-	public String getModelloAereo() {
-		return modelloAereo;
+	public ModelloAereo getModello() {
+		return modello;
 	}
-	public void setModelloAereo(String modelloAereo) {
-		this.modelloAereo = modelloAereo;
+	public void setModello(ModelloAereo modello) {
+		this.modello = modello;
 	}
 	public Integer getVelocita() {
 		return velocita;

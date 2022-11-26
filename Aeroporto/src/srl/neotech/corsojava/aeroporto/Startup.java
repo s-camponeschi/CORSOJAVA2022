@@ -1,45 +1,124 @@
 package srl.neotech.corsojava.aeroporto;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Startup {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ArrayList<Aereo> aereiInPartenza= new ArrayList<Aereo>();
+	Aeroporto aeroporto= new Aeroporto();
+	Random rnd= new Random();
+	Faker faker= new Faker();
+	
+	//aerei in avvicinamento
+	for(int i=0;i<200; i++) {
+		Aereo a= new Aereo();
+		a.setDistanzaDallAeroporto(rnd.nextInt(100));
+		a.setVelocita(rnd.nextInt(1,100));
+		a.setIdUnivoco(i);
+		a.setCompagniaAerea(faker.company().name());
+		a.setOrario(rnd.nextInt(500));
+		a.setStato(StatoAereo.IN_AVVICINAMENTO);
 		
-		ArrayList<Aereo> aereiInAvvicinamento= new ArrayList<Aereo>();
+		Integer numPasseggeri= rnd.nextInt(200);
+		ModelloAereo modello= new ModelloAereo();
+		modello.setCapienzaNumeriPasseggeri(numPasseggeri);
+		modello.setCostruttore(faker.company().name());
+		modello.setCodiceModello(faker.company().isbn13());
+		a.setModello(modello);
 		
-		Aeroporto aeroporto= new Aeroporto();
-		
-		for (int i=1; i<100; i++) {
-		Aereo unAereoInPartenza= new Aereo();
-		aereiInPartenza.add(unAereoInPartenza);
-		
-		}
-		for(Aereo a:aereiInPartenza) {
-			System.out.println(a);
-		}	
-		
-		for (int i=1; i<200; i++) {
-		Aereo unAereoInAvvicinamento= new Aereo();
-		aereiInAvvicinamento.add(unAereoInAvvicinamento);
-				
-		}
-		for(Aereo a:aereiInAvvicinamento) {
-		System.out.println(a);			
+		for(int j=0; j<modello.getCapienzaNumeriPasseggeri();j++)  {
+			Passeggero p= null;
+			Integer sceltaTipoPasseggero= rnd.nextInt(2);
+			if(sceltaTipoPasseggero==0) p=new Excelsior();
+			if(sceltaTipoPasseggero==1) p=new Business();
+			if(sceltaTipoPasseggero==2) p=new Turista();
 			
+			p.setEta(rnd.nextInt(100));
+			p.setIdUnivoco(j);
+			Integer sceltaMF= rnd.nextInt(1);
+			if(sceltaMF==0) p.setMF('M');
+			if(sceltaMF==1) p.setMF('F');
+			p.setHaBagagli(false);
+			p.setHasFiore(false);
+			a.getPasseggeri().add(p);
 		}
+		aeroporto.getAereiInAvvicinamento();.add(a);
+	}
+	for(Aereo a:aeroporto.getAereiInAvvicinamento()) {
+		System.out.println(a);
+	}
+	
+	//aerei in partenza
+	for(int i=0;i<100; i++) {
+		Aereo a= new Aereo();
+		a.setDistanzaDallAeroporto(0);
+		a.setVelocita(1,100);
+		a.setIdUnivoco(i);
+		a.setCompagniaAerea(faker.company().name());
+		a.setOrario(rnd.nextInt(500));
+		a.setStato(StatoAereo.IN_PARTENZA);
 		
-		for (int i=1; i<1000; i++) {
-		Passeggero p= new Passeggero();
-		aeroporto.getPasseggeri().add(p);
+		Integer numPasseggeri= rnd.nextInt(200);
+		ModelloAereo modello= new ModelloAereo();
+		modello.setCapienzaNumeriPasseggeri(numPasseggeri);
+		modello.setCostruttore(faker.company().name());
+		modello.setCodiceModello(faker.code().isbn13());
+		a.setModello(modello);
 		
-		System.out.println("i passeggeri pronti per il check in sono:"+aeroporto.getPasseggeri().size());
+		for(j=0;j<modello.getCapienzaNumeriPasseggeri();j++) {
+			Passeggero p= null;
+			Integer sceltaTipoPasseggero= rnd.nextInt(2);
+			if(sceltaTipoPasseggero==0) p= new Excelsior();
+			if(sceltaTipoPasseggero==1) p= new Business();
+			if(sceltaTipoPasseggero==2) p= new Turista();
+			
+			p.setEta(rnd.nextInt(100));
+			p.setIdUnivoco(j);
+			Integer sceltaMF= rnd.nextInt(1);
+			if(sceltaMF==0) p.setMF('M');
+			if(sceltaMF==1) p.setMF('F');
+			p.setHaBagagli(false);
+			p.setHasFiore(false);
+			p.getPasseggeri().add(p);
+		}
+		aeroporto.getAereiInPartenza().add(a);
+	}
+	for(Aereo a:aeroporto.getAereiInPartenza()) {
+		System.out.println(a);
+	}
+	
+	//passeggeri pronti per il check-in
+	for(int i=0; i<100; i++) {
+		Passeggero p=null;
+		Integer sceltaTipoPasseggero= rnd.nextInt(2);
+		if (sceltaTipoPasseggero==0) p=new Excelsior();
+		if (sceltaTipoPasseggero==1) p=new Business();
+		if (sceltaTipoPasseggero==2) p=new Turista();
 		
-		}	
-		
+		p.setEta(rnd.nextInt(100));
+		p.setIdUnivoco(i);
+		Integer sceltaMF= rnd.nextInt(1);
+		if(sceltaMF==0) p.setMF('M');
+		if(sceltaMF==1) p.setMF('F');
+		p.setHaBagagli(true);
+		p.setHasFiore(false);
+		aeroporto.getPasseggeriInAttesa().add(p);
+	}
+	for(Passeggero p:aeroporto.getPasseggeriInAttesa()) {
+		System.out.println(p);
+	}
+	
+	//atterraggio aerei
+	for(Aereo a: aeroporto.getAereiInAvvicinamento()) {
+		aeroporto.atterraggio(a);
+	}
+	
+	//partenza aerei
+	for(Aereo a:aeroporto.getAereiInPartenza()) {
+		aeroporto.decollo(a);
+	}
 	}
 
 }

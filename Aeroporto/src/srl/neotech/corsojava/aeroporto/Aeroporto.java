@@ -6,46 +6,78 @@ import java.util.Random;
 
 public class Aeroporto {
 
-	ArrayList<Passeggero> passeggeri= new ArrayList<Passeggero>();
+	ArrayList<Aereo> aereiInPartenza= new ArrayList<Aereo>();
+	ArrayList<Aereo> aereiInAvvicinamento= new ArrayList<Aereo>();
+	ArrayList<Passeggero> passeggeriInAttesa= new ArrayList<Passeggero>();
 	
+	private Integer raddioDiAzione;
+
+	public ArrayList<Aereo> getAereiInPartenza() {
+		return aereiInPartenza;
+	}
+
+	public void setAereiInPartenza(ArrayList<Aereo> aereiInPartenza) {
+		this.aereiInPartenza = aereiInPartenza;
+	}
+
+	public ArrayList<Aereo> getAereiInAvvicinamento() {
+		return aereiInAvvicinamento;
+	}
+
+	public void setAereiInAvvicinamento(ArrayList<Aereo> aereiInAvvicinamento) {
+		this.aereiInAvvicinamento = aereiInAvvicinamento;
+	}
+
+	public ArrayList<Passeggero> getPasseggeriInAttesa() {
+		return passeggeriInAttesa;
+	}
+
+	public void setPasseggeriInAttesa(ArrayList<Passeggero> passeggeriInAttesa) {
+		this.passeggeriInAttesa = passeggeriInAttesa;
+	}
+
+	public Integer getRaddioDiAzione() {
+		return raddioDiAzione;
+	}
+
+	public void setRaddioDiAzione(Integer raddioDiAzione) {
+		this.raddioDiAzione = raddioDiAzione;
+	}
 	
-	public ArrayList<Passeggero> getPasseggeri() {
-		return passeggeri;
-	}
-	public void setPasseggeri(ArrayList<Passeggero> passeggeri) {
-		this.passeggeri = passeggeri;
-	}
-	public Aeroporto() {
-		
-	}
-		Passeggero p= new Business();
-		
-		Aereo a= new Aereo();
-		checkIn(null,p);
-		
-		Random rnd= new Random();
-		Passeggero p2;
-		if(rnd.nextInt(0,2)==1) p= new Excelsior();
-		if (rnd.nextInt(0,2)==1) p= new Turista();
-		if (rnd.nextInt(0,2)==1) p= new Business();
-		
-		public Aereo atterraggio (Aereo stato) {
-			a.setStato(StatoAereo.ATTERRATO.toString());
-			return stato;
+	public Aereo atterraggio (Aereo a) {
+		while(a.getDistanzaDallAeroporto()>0) {
+			Integer distanzaAttuale= a.getDistanzaDallAeroporto()-a.getVelocita();
+			System.out.println("Blink!:"+a);
+			a.setDistanzaDallAeroporto(distanzaAttuale);
 		}
+		a.setStato(StatoAereo.ATTERRATO);
+		System.out.println(a);
+		}
+	
+	public Aereo decollo(Aereo a) {
+		while(a.getDistanzaDallAeroporto()<=0) {
+			Integer partenza=a.getDistanzaDallAeroporto()+a.getVelocita();
+			a.setDistanzaDallAeroporto(partenza);
+		}
+		a.setStato(StatoAereo.IN_PARTENZA);
+		System.out.println(a);
+		for(Passeggero p:a.get)
+	
+		
 			
-		public Aereo decollo (Aereo stato) {
-			a.setStato(StatoAereo.IN_PARTENZA.toString());
+		public void checkIn (Passeggero p) {
+			if(p instanceof Excelsior ) ((Excelsior)p.set)
+			if(p instanceof Business) ((Business)p.set)
+			if(p instanceof Turista) (Turista) p.set
+			if (p.getMF().equals('F')) p.setHasFiore(true);
+			System.out.println(p);
 		}
-	
-	public Aereo checkIn(Aereo a, Passeggero p) {
-		if (p instanceof Excelsior) ((Excelsior)p).setHaChampagne(true);
-		if (p instanceof Business) ((Business)p).setHaGiornale(true);
-		if (p instanceof Turista) ((Turista)p).setHaAnimale(true);
-		
-		return null;
-		
-		
+		public void checkOut (Passeggero p) {
+			if(p instanceof Excelsior ) ((Excelsior)p.set)
+			if(p instanceof Business) ((Business)p.set)
+			if(p instanceof Turista) (Turista) p.set
+			if (p.getMF().equals('F')) p.setHasFiore(true);
+		}
 	}
 
 }
