@@ -1,0 +1,12 @@
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/Automobile.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/controllers/AutosaloneController.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/controllers/HomeController.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/ECostruttore.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/Accessorio.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/configuration/SpringBootTomcatApplication.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/services/HomeService.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/EAlimentazione.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/ETipologiaAccessorio.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/Autosalone.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/EClasseAccessorio.java
+/home/neotech/gitclones/GITHUB/AutoSalone/src/main/java/srl/neotech/model/EColore.java
