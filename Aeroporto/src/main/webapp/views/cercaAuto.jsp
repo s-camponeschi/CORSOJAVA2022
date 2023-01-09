@@ -17,6 +17,7 @@
 
 <!-- Theme style -->
 <link rel="stylesheet" href="static/css/adminlte.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 
@@ -28,18 +29,16 @@
 
 <!-- Left navbar links -->
 <ul class="navbar-nav">
-	<li class="nav-item">
-	<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-	</li>
-	<li class="nav-item d-none d-sm-inline-block">
-	<a href="index3.html" class="nav-link">Dettaglio Auto</a>
-	</li>
-
+<li class="nav-item">
+<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+</li>
+<li class="nav-item d-none d-sm-inline-block">
+<a href="index3.html" class="nav-link">Cerca Auto</a>
+</li>
 </ul>
 
 <!-- Right navbar links -->
 <ul class="navbar-nav ml-auto">
-
 </ul>
 </nav>
 
@@ -51,6 +50,7 @@
 <!-- Brand Logo -->
 <a class="brand-link">
 <span class="brand-text font-weight-light">neotech</span>
+
 </a>
 
 <!-- Sidebar -->
@@ -61,6 +61,7 @@
 <!-- SidebarSearch Form -->
 
 <!-- Sidebar Menu -->
+
 <nav class="mt-2">
 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -73,12 +74,11 @@ with font-awesome or any other icon font library -->
 </a>
 </li>
 <li class="nav-item">
-<a href=listaAuto" class="nav-link">
+<a href="listaAuto" class="nav-link">
 <i class="nav-icon fas fa-th"></i>
 <p>Lista Automobili</p>
 </a>
 </li>
-
 <li class="nav-item">
 <a href="aggiungiAuto" class="nav-link">
 <i class="nav-icon fas fa-th"></i>
@@ -91,6 +91,7 @@ with font-awesome or any other icon font library -->
 <p>Cerca Auto</p>
 </a>
 </li>
+
 <li class="nav-item">
 <a href="dettaglioAuto" class="nav-link">
 <i class="nav-icon fas fa-th"></i>
@@ -114,7 +115,9 @@ with font-awesome or any other icon font library -->
 <div class="container-fluid">
 <div class="row mb-2">
 <div class="col-sm-6">
+<h1>Cerca Automobile</h1>
 </div>
+
 <div class="col-sm-6">
 <ol class="breadcrumb float-sm-right">
 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -125,68 +128,65 @@ with font-awesome or any other icon font library -->
 </section>
 
 <!-- Main content -->
-<sectin class="content">
+<section class="content">
 <div class="clearfix">
 <div class="row">
-<div class="col-md-2">
-<h3>DETTAGLIO</h>
-</div>
+<div class="md-col-12 text-center" >
+
+<form:form action="searchAuto" method="POST" modelAttribute="requestCercaAuto">
+<label>Targa</label>
+<form:input type="text" id="targa" name="targa" path="targa"/>
+</br>
+<label>Costo</label>
+<form:input type="text" id="costo" name="costo" path="costo"/>
+</br>
+</br>
+<form:select id="colore" name="colore" path="colore" class="form-control">
+<option value="">Selezionare un colore</option>
+<form:options items="${auto.colore}" />
+
+<option value="NERO">NERO</option>
+<option value="BIANCO">BIANCO</option>
+<option value="ROSSO">ROSSO</option>
+<option value="BLU">BLU</option>
+</form:select>
+<form:select id="costruttore" name="costruttore" path="costruttore" class="form-control">
+<option value="">Selezionare un costruttore</option>
+<form:options items="${auto.costruttore}" />
+<option value="BUGATTI">BUGATTI</option>
+<option value="FERRARI">FERRARI</option>
+<option value="PORSCHE">PORSCHE</option>
+<option value="LAMBORGHINI">LAMBORGHINI</option>
+<option value="MASERATI">MASERATI</option>
+</form:select>
+
+<form:select id="alimentazione" name="alimentazione" path="costruttore" class="form-control">
+<option value="">Selezionare un tipo di alimentazione</option>
+<form:options items="${auto.alimentazione}" />
+<option value="BENZINA">BENZINA</option>
+<option value="ELETTRICO">ELETTRICO</option>
+<option value="DIESEL">DIESEL</option>
+<option value="IBRIDO">IBRIDO</option>
+</form:select>
+
+<form:select id="modello" name="modello" path="modello" class="form-control">
+<option value="">Selezionare un modello</option>
+<form:options items="${auto.modello}" />
+<option value="VEYRON">VEYRON</option>
+<option value="ROMA">ROMA</option>
+<option value="MACAN">MACAN</option>
+<option value="HURACAN">HURACAN</option>
+<option value="LEVANTE">LEVANTE</option>
+</form:select>
+</br>
+
+<form:button class="btn btn-primary">Cerca</form:button>
+</form:form>
+
 </div>
 
-<div class="container">
-<div class="row">
-<div class="col-md-6">
-<div class= "form-group">
-
-<label>ID</label>
-<input id="id" class= "form-control" name="id" type="text" value="${auto.id}">
-</div>
-<div class= "form-group">
-<label>TARGA</label>
-<input id="targa" class= "form-control" name="targa" type="text" value="${auto.targa}">
-</div>
-<div class= "form-group">
-<label>ALIMENTAZIONE</label>
-<input id="alimentazione" class= "form-control" name="alimentazione" type="text" value="${auto.alimentazione}">
-</div>
-<div class= "form-group">
-<label>COSTO</label>
-<input id="costo" class= "form-control" name="costo" type="text" value="${auto.costo}">
-
-</div>
 </div>
 
-<div class="col-md-6">
-<div class= "form-group">
-<label>COSTRUTTORE</label>
-<input id="costruttore" class= "form-control" name="costruttore" type="text" value="${auto.costruttore}">
-</div>
-<div class= "form-group">
-<label>ANNO</label>
-<input id="annoCostruzione" class= "form-control" name="annoCostruzione" type="text" value="${auto.annoCostruzione}">
-</div>
-
-<div class= "form-group">
-<label>MODELLO</label>
-<input id="modello" class= "form-control" name="modello" type="text" value="${auto.modello}">
-</div>
-<div class= "form-group">
-<label>COLORE</label>
-<input id="colore" class= "form-control" name="colore" type="text" value="${auto.colore}">
-</div>
-<c:forEach var="auto" items="${listaAccessori}" >
-<tr>
-	<td>${accessori.id}</td>
-	<td>${accessori.classe}</td>
-	<td>${accessori.tipologia}</td>
-	<td>${accessori.descrizione}</td>
-	<td>${accessori.costo}</td>
-</tr>
-
-</c:forEach>
-</div>
-</div>
-</div>
 </div>
 
 </section>
@@ -212,17 +212,19 @@ with font-awesome or any other icon font library -->
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-
 <script src="static/js/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+
+<!--  --> Bootstrap 4 -->
 
 <script src="static/js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="static/js/adminlte.min.js"></script>
 
 <!-- Demo Template -->
+
 <script src="static/js/fireAjax.js"></script>
 <script src="static/js/demoTemplate.js"></script>
 
 </body>
+
 </html>
