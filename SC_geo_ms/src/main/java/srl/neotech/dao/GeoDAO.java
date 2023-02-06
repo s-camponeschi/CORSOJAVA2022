@@ -1,33 +1,24 @@
 package srl.neotech.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class GeoDAO {
-	
-	@Autowired
-	GeoRepository geoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+ @@ public List<Regione> getListaRegioni() {
+		return geoRepository.getListaRegioni();
+	}
 
-	public Integer countElementi() {
-		return geoRepository.countElementi();
+	public List<Comune> getListaComuni(Integer id_provincia) {
+	public List<Comune> getListaComuni(String id_provincia) {
+		return geoRepository.getListaComuni(id_provincia);
 	}
-	
-	public Elemento getelemento(Integer id) {
-		return geoRepository.getElementi(id);
+
+ @@ public List<ComuneAutocomplete> getComuneAutoComplete(String txt){
+		return geoRepository.getComunemAutoComplete(txt);
 	}
-	
-	public list<Elemento> getListaElementi() {
-		return geoRepository.getListaElementi();
+
+	public Comune getMeteo(String istat) {
+		return geoRepository.getMeteo(istat);
 	}
-	
-	public void addElemento(Elemento elemento) {
-		geoRepository.addElemento(elemento);
-	} 
-	
-	public void updatElemento(Elemento elemento) {
-		geoRepository.updateElemento(elemento);
-	}
-	
-	public void deletElemento(Integer idelemento) {
-		geoRepository.deletElemento(edelemento);
-	}
+
 }
